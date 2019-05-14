@@ -2,29 +2,28 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>INDEX</title>
 </head>
 <body>
 <table>
     <thead>
     <tr>
         <th> Id </th>
-        <th> Name </th>
-        <th> Country </th>
-        <th> Population </th>
+        <th> Title </th>
+        <th> Reg_Date </th>
     </tr>
     </thead>
     <tbody>
-        <tr th:if="${cityList == null or cityList.isEmpty()}">
-            <td colspan="2"> No Books Available </td>
+        <tr th:if="${boardList == null or boardList.isEmpty()}">
+            <td colspan="2"> Board List </td>
         </tr>
-        <tr th:each="city : ${cityList}">
-            <td><span th:text="${city.id}">  </span></td>
-            <td><span th:text="${city.name}">  </span></td>
-            <td><span th:text="${city.country}">  </span></td>
-            <td><span th:text="${city.population}">  </span></td>
+        <tr th:each="board : ${boardList}">
+            <td><a th:href="@{'/detail/'+${board.id}}">No.<span th:text="${board.id}"></span></a></td>
+            <td><span th:text="${board.title}">  </span></td>
+            <td><span th:text="${board.regDate}">  </span></td>
         </tr>
     </tbody>
 </table>
+<a href="/create">Create</a>
 </body>
 </html>

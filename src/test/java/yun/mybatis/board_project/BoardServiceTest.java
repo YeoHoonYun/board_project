@@ -9,7 +9,9 @@ import org.springframework.test.annotation.Commit;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
+import yun.mybatis.board_project.model.Board;
 import yun.mybatis.board_project.model.City;
+import yun.mybatis.board_project.service.BoardService;
 import yun.mybatis.board_project.service.CityService;
 
 import java.util.List;
@@ -19,30 +21,28 @@ import java.util.List;
 @RunWith(SpringRunner.class)
 @Transactional(transactionManager = "transactionManager")
 @Commit
-public class CityServiceTest extends DefaultTransactionDefinition {
+public class BoardServiceTest extends DefaultTransactionDefinition {
     @Autowired
-    CityService cityService;
+    BoardService boardService;
 
     @Test
-    public void getCityById() {
-        City city = cityService.getCityById(1L);
-        System.out.println("TEST : " + city);
+    public void getBoardById() {
+        Board board = boardService.selectBoardById(1L);
+        System.out.println("TEST : " + board);
     }
 
     @Test
-    public void getAllCity() {
-        List<City> cities = cityService.getAllCity();
-        for(City city : cities){
-            System.out.println(city);
+    public void getAllBoard() {
+        List<Board> boardList = boardService.selectAllBoard();
+        System.out.println(boardList);
+        for(Board board : boardList){
+            System.out.println(board.getRegDate());
         }
     }
 
 
     @Test
-    public void addCities() {
-        cityService.addCity(new City("뉴욕", "미국", 1_000_000L));
-        cityService.addCity(new City("런던", "영국", 2_000_000L));
-        cityService.addCity(new City("파리", "프랑스", 3_000_000L));
-        this.getAllCity();
+    public void addBoards() {
+        boardService.insertBoard(new Board(1L, "세번째 글입니다.", "세번째 글의 내용입니다."));
     }
 }

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>DETAIL</title>
+</head>
+<body>
+<p><b>ID : </b><span th:text="${board.id}"></span></p>
+<p><b>TITLE : </b><span th:text="${board.title}"></span></p>
+<p><b>CONTENT : </b><span th:text="${board.content}"></span></p>
+<p><b>DATE : </b><span th:text="${board.regDate}"></span></p>
+
+<a th:href="@{'/update/'+${board.id}}">Update</a><br/>
+<a href="/">Cancel</a>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>UPDATE</title>
+</head>
+<body>
+<form method="post" action="/update" name="board">
+    <b>ID : </b><input type="text" name="id" th:value="${board.id}"/><br/>
+    <b>TITLE : </b><input type="text" name="title" th:value="${board.title}"/><br/>
+    <b>CONTENT : </b><input type="text" name="content" th:value="${board.content}"/><br/>
+    <b>DATE : </b><input type="text" name="regDate" th:value="${board.regDate}"/><br/>
+    <input type="submit"/>
+</form>
+<a href="/main">Cancel</a>
+</body>
+</html>

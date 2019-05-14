@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="yun.mybatis.board_project.repository.UserMapper">
+
+    <select id="selectUserById" resultType="user" >
+        select id, email, reg_date
+          from users
+         where id = #{id}
+    </select>
+
+    <select id="selectAllUser" resultType="user">
+        select id, email, reg_date
+          from users;
+    </select>
+
+    <insert id="insertUser">
+        INSERT INTO users(email, password)
+        VALUES (#{email}, #{password});
+    </insert>
+
+</mapper>

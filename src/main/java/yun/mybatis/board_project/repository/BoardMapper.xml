@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="yun.mybatis.board_project.repository.BoardMapper">
+
+    <select id="selectBoardById" resultType="board" >
+        SELECT b.id, title, content, b.reg_date as regDate
+          FROM boards b,
+               users u
+         WHERE b.users_id = u.id
+           AND b.id = #{id}
+    </select>
+
+    <select id="selectAllBoard" resultType="board">
+        SELECT id, title, content, reg_date as regDate
+          FROM boards
+    </select>
+
+    <insert id="insertBoard">
+        INSERT INTO boards(users_id, title, content)
+        VALUES (#{id}, #{title}, #{content});
+    </insert>
+    
+    <update id="updateBoard">
+        UPDATE boards
+           SET title = #{title},
+               content = #{content}
+         WHERE id = #{id}
+    </update>
+
+</mapper>
