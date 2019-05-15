@@ -1,21 +1,18 @@
 package yun.mybatis.board_project.controller;
 
-import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import yun.mybatis.board_project.model.Board;
-import yun.mybatis.board_project.model.City;
 import yun.mybatis.board_project.model.User;
 import yun.mybatis.board_project.service.BoardService;
-import yun.mybatis.board_project.service.CityService;
 
 import java.util.List;
 
 @Controller
-@AllArgsConstructor
 public class BoardController {
-
+    @Autowired
     BoardService boardService;
 
     @GetMapping(value = {"", "/", "/main"})
@@ -47,10 +44,11 @@ public class BoardController {
     }
 
     @PostMapping(value = "/create")
-    public String boardCreate(@RequestBody Board board){
+    public String boardCreate(@RequestParam(value = "title") String title,
+                              @RequestParam(value = "content") String content){
         User user = new User(4L,"test@jiguem.com", "1234");
-        boardService.insertBoard(new Board(user.getId(), board.getTitle(), board.getContent()));
-        return "redirect::index";
+        boardService.insertBoard(new Board(user.getId(), title, content));
+        return "redirect:index";
     }
 
     @PostMapping(value = "/update")
