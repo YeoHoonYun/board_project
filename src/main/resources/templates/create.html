@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>CREATE</title>
 </head>
 <body>
-
+<form method="post" action="/create" name="board">
+    <b>ID : </b><input type="text" name="id"/><br/>
+    <b>TITLE : </b><input type="text" name="title"/><br/>
+    <b>CONTENT : </b><input type="text" name="content"/><br/>
+    <input type="submit"/>
+</form>
+<a href="/main">Cancel</a>
 </body>
 </html>
